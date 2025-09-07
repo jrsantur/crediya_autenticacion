@@ -1,0 +1,45 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: "Autenticacion"
+  devtools:
+    add-properties: false
+  profiles:
+    include: null
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "https://idp.example.com/issuer"
+          client-id: "myclientid"
+jwt:
+  json-exp-roles: "rol"
+  secret: estaesmiclavesupersecretasecreta1
+  ttlSeconds: 3600
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+cors:
+  allowed-origins: "http://localhost:4200,http://localhost:8080"
+
+
+adapters:
+  r2dbc:
+    database: "crediya_autenticacion"
+    host: "localhost"
+    port: 5432
+    username: "postgres"
+    password: "root"
+    schema: "public"
+    pool:
+      initial-size: 12
+      max-size: 15
+      max-idle-time: 10
