@@ -33,12 +33,12 @@ cors:
 
 adapters:
   r2dbc:
-    database: "crediya_autenticacion"
-    host: "localhost"
-    port: 5432
-    username: "postgres"
-    password: "root"
-    schema: "public"
+    database: ${POSTGRES_DB:crediya_autenticacion}
+    host: ${POSTGRES_HOST:localhost}
+    port: ${POSTGRES_PUERTO:5432}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:root}
+    schema: ${POSTGRES_SCHEMA:public}
     pool:
       initial-size: 12
       max-size: 15
