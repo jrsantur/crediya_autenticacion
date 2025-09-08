@@ -1,5 +1,5 @@
 --
--- PostgreSQL database dump
+-- crediyaQL database dump
 --
 
 -- Dumped from database version 17.6
@@ -10,7 +10,6 @@
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -25,7 +24,7 @@ SET default_table_access_method = heap;
 
 --
 -- TOC entry 222 (class 1259 OID 16533)
--- Name: permisos; Type: TABLE; Schema: public; Owner: postgres
+-- Name: permisos; Type: TABLE; Schema: public; Owner: crediya
 --
 
 CREATE TABLE public.permisos (
@@ -41,11 +40,11 @@ CREATE TABLE public.permisos (
 );
 
 
-ALTER TABLE public.permisos OWNER TO postgres;
+ALTER TABLE public.permisos OWNER TO crediya;
 
 --
 -- TOC entry 223 (class 1259 OID 16543)
--- Name: rol_permisos; Type: TABLE; Schema: public; Owner: postgres
+-- Name: rol_permisos; Type: TABLE; Schema: public; Owner: crediya
 --
 
 CREATE TABLE public.rol_permisos (
@@ -54,11 +53,11 @@ CREATE TABLE public.rol_permisos (
 );
 
 
-ALTER TABLE public.rol_permisos OWNER TO postgres;
+ALTER TABLE public.rol_permisos OWNER TO crediya;
 
 --
 -- TOC entry 221 (class 1259 OID 16523)
--- Name: roles; Type: TABLE; Schema: public; Owner: postgres
+-- Name: roles; Type: TABLE; Schema: public; Owner: crediya
 --
 
 CREATE TABLE public.roles (
@@ -72,11 +71,11 @@ CREATE TABLE public.roles (
 );
 
 
-ALTER TABLE public.roles OWNER TO postgres;
+ALTER TABLE public.roles OWNER TO crediya;
 
 --
 -- TOC entry 220 (class 1259 OID 16458)
--- Name: solicitud; Type: TABLE; Schema: public; Owner: postgres
+-- Name: solicitud; Type: TABLE; Schema: public; Owner: crediya
 --
 
 CREATE TABLE public.solicitud (
@@ -92,11 +91,11 @@ CREATE TABLE public.solicitud (
 );
 
 
-ALTER TABLE public.solicitud OWNER TO postgres;
+ALTER TABLE public.solicitud OWNER TO crediya;
 
 --
 -- TOC entry 219 (class 1259 OID 16457)
--- Name: solicitud_idsolicitud_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: solicitud_idsolicitud_seq; Type: SEQUENCE; Schema: public; Owner: crediya
 --
 
 ALTER TABLE public.solicitud ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
@@ -111,7 +110,7 @@ ALTER TABLE public.solicitud ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 --
 -- TOC entry 218 (class 1259 OID 16445)
--- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
+-- Name: usuario; Type: TABLE; Schema: public; Owner: crediya
 --
 
 CREATE TABLE public.usuario (
@@ -133,11 +132,11 @@ CREATE TABLE public.usuario (
 );
 
 
-ALTER TABLE public.usuario OWNER TO postgres;
+ALTER TABLE public.usuario OWNER TO crediya;
 
 --
 -- TOC entry 217 (class 1259 OID 16444)
--- Name: usuario_idusuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: usuario_idusuario_seq; Type: SEQUENCE; Schema: public; Owner: crediya
 --
 
 ALTER TABLE public.usuario ALTER COLUMN idusuario ADD GENERATED ALWAYS AS IDENTITY (
@@ -153,7 +152,7 @@ ALTER TABLE public.usuario ALTER COLUMN idusuario ADD GENERATED ALWAYS AS IDENTI
 --
 -- TOC entry 4887 (class 0 OID 16533)
 -- Dependencies: 222
--- Data for Name: permisos; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: permisos; Type: TABLE DATA; Schema: public; Owner: crediya
 --
 
 COPY public.permisos (id, codigo, nombre, descripcion, recurso, accion, activo, fecha_creacion, fecha_actualizacion) FROM stdin;
@@ -175,7 +174,7 @@ COPY public.permisos (id, codigo, nombre, descripcion, recurso, accion, activo, 
 --
 -- TOC entry 4888 (class 0 OID 16543)
 -- Dependencies: 223
--- Data for Name: rol_permisos; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: rol_permisos; Type: TABLE DATA; Schema: public; Owner: crediya
 --
 
 COPY public.rol_permisos (rol_id, permiso_id) FROM stdin;
@@ -207,7 +206,7 @@ COPY public.rol_permisos (rol_id, permiso_id) FROM stdin;
 --
 -- TOC entry 4886 (class 0 OID 16523)
 -- Dependencies: 221
--- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: crediya
 --
 
 COPY public.roles (id, codigo, nombre, descripcion, activo, fecha_creacion, fecha_actualizacion) FROM stdin;
@@ -220,7 +219,7 @@ COPY public.roles (id, codigo, nombre, descripcion, activo, fecha_creacion, fech
 --
 -- TOC entry 4885 (class 0 OID 16458)
 -- Dependencies: 220
--- Data for Name: solicitud; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: solicitud; Type: TABLE DATA; Schema: public; Owner: crediya
 --
 
 COPY public.solicitud (id, documento_identidad_cliente, tipo_prestamo, monto, plazo_meses, estado, observaciones, create_at, update_at) FROM stdin;
@@ -252,7 +251,7 @@ COPY public.solicitud (id, documento_identidad_cliente, tipo_prestamo, monto, pl
 --
 -- TOC entry 4883 (class 0 OID 16445)
 -- Dependencies: 218
--- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: crediya
 --
 
 COPY public.usuario (idusuario, nombres, apellidos, telefono, direccion, fecha_nacimiento, correo_electronico, salario_base, activo, create_at, update_at, password, documento_identidad, rol, estado) FROM stdin;
@@ -264,7 +263,7 @@ COPY public.usuario (idusuario, nombres, apellidos, telefono, direccion, fecha_n
 --
 -- TOC entry 4894 (class 0 OID 0)
 -- Dependencies: 219
--- Name: solicitud_idsolicitud_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: solicitud_idsolicitud_seq; Type: SEQUENCE SET; Schema: public; Owner: crediya
 --
 
 SELECT pg_catalog.setval('public.solicitud_idsolicitud_seq', 27, true);
@@ -273,7 +272,7 @@ SELECT pg_catalog.setval('public.solicitud_idsolicitud_seq', 27, true);
 --
 -- TOC entry 4895 (class 0 OID 0)
 -- Dependencies: 217
--- Name: usuario_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: usuario_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: crediya
 --
 
 SELECT pg_catalog.setval('public.usuario_idusuario_seq', 24, true);
@@ -281,7 +280,7 @@ SELECT pg_catalog.setval('public.usuario_idusuario_seq', 24, true);
 
 --
 -- TOC entry 4730 (class 2606 OID 16542)
--- Name: permisos permisos_codigo_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: permisos permisos_codigo_key; Type: CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.permisos
@@ -290,7 +289,7 @@ ALTER TABLE ONLY public.permisos
 
 --
 -- TOC entry 4732 (class 2606 OID 16540)
--- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.permisos
@@ -299,7 +298,7 @@ ALTER TABLE ONLY public.permisos
 
 --
 -- TOC entry 4734 (class 2606 OID 16547)
--- Name: rol_permisos rol_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: rol_permisos rol_permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.rol_permisos
@@ -308,7 +307,7 @@ ALTER TABLE ONLY public.rol_permisos
 
 --
 -- TOC entry 4726 (class 2606 OID 16532)
--- Name: roles roles_codigo_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: roles roles_codigo_key; Type: CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.roles
@@ -317,7 +316,7 @@ ALTER TABLE ONLY public.roles
 
 --
 -- TOC entry 4728 (class 2606 OID 16530)
--- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.roles
@@ -326,7 +325,7 @@ ALTER TABLE ONLY public.roles
 
 --
 -- TOC entry 4724 (class 2606 OID 16466)
--- Name: solicitud solicitud_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: solicitud solicitud_pkey; Type: CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.solicitud
@@ -335,7 +334,7 @@ ALTER TABLE ONLY public.solicitud
 
 --
 -- TOC entry 4720 (class 2606 OID 16454)
--- Name: usuario usuario_correo_electronico_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: usuario usuario_correo_electronico_key; Type: CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.usuario
@@ -344,7 +343,7 @@ ALTER TABLE ONLY public.usuario
 
 --
 -- TOC entry 4722 (class 2606 OID 16452)
--- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.usuario
@@ -353,7 +352,7 @@ ALTER TABLE ONLY public.usuario
 
 --
 -- TOC entry 4735 (class 2606 OID 16553)
--- Name: rol_permisos rol_permisos_permiso_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: rol_permisos rol_permisos_permiso_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.rol_permisos
@@ -362,7 +361,7 @@ ALTER TABLE ONLY public.rol_permisos
 
 --
 -- TOC entry 4736 (class 2606 OID 16548)
--- Name: rol_permisos rol_permisos_rol_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: rol_permisos rol_permisos_rol_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: crediya
 --
 
 ALTER TABLE ONLY public.rol_permisos
@@ -372,6 +371,6 @@ ALTER TABLE ONLY public.rol_permisos
 -- Completed on 2025-09-07 13:45:06
 
 --
--- PostgreSQL database dump complete
+-- crediyaQL database dump complete
 --
 
