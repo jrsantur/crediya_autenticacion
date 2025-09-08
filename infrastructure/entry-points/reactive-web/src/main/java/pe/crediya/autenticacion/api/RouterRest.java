@@ -15,7 +15,7 @@ public class RouterRest {
     public RouterFunction<ServerResponse> routerFunction(Handler handler) {
         return route(POST("/api/v1/login"), handler::login)
                 .andRoute(GET("/api/v1/usuarios/valida_token") , handler::validaToken  )
-                .andRoute(POST("/api/v1/usuarios"), handler::crearUsuario);
-                //.andRoute(GET("/api/v1/usuarios"), handler::consultarUsuarioPorDocumento);
+                .andRoute(POST("/api/v1/usuarios"), handler::crearUsuario)
+                .andRoute(GET("/api/v1/usuarios"), handler::consultarUsuarioPorDocumento);
     }
 }

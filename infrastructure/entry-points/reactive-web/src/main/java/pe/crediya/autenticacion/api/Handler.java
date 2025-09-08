@@ -48,6 +48,24 @@ public class Handler {
                 .flatMap(usuario -> {
                     var response = UsuarioResponseDto.builder()
                             .id(usuario.getId())
+                            .documento(usuario.getDocumentoIdentidad())
+                            .nombre(usuario.getNombres())
+                            .apellidos(usuario.getApellidos())
+                            .email(usuario.getEmail())
+                            .salarioBase(usuario.getSalarioBase())
+                            .fechaCreacion(usuario.getFechaCreacion()).build();
+                    return ServerResponse.ok().bodyValue(response);
+                })
+                .doOnError(error -> log.error("Error: {}", error.getMessage()));
+    }
+
+    public Mono<ServerResponse> consultarUsuarioPorDocumento(ServerRequest serverRequest){
+        String documento = serverRequest.queryParam("documento").orElse("");
+        return usuarioUseCase.buscarPorDocumentoIdentidad(documento)
+                .flatMap(usuario -> {
+                    var response = UsuarioResponseDto.builder()
+                            .id(usuario.getId())
+                            .documento(usuario.getDocumentoIdentidad())
                             .nombre(usuario.getNombres())
                             .apellidos(usuario.getApellidos())
                             .email(usuario.getEmail())
@@ -55,11 +73,7 @@ public class Handler {
                     return ServerResponse.ok().bodyValue(response);
                 })
                 .doOnError(error -> log.error("Error: {}", error.getMessage()));
-    }
 
-    public Mono<ServerResponse> consultarUsuario(ServerRequest serverRequest){
-        String documento = serverRequest.queryParam("documento").orElse("");
-        return null;
     }
 
     public Mono<ServerResponse> validaToken(ServerRequest serverRequest){

@@ -19,6 +19,9 @@ public class UsuarioResponseDto {
     @JsonProperty("id")
     long id;
 
+    @JsonProperty("documento")
+    String documento;
+
     @JsonProperty("nombre")
     String nombre;
 
@@ -27,6 +30,9 @@ public class UsuarioResponseDto {
 
     @JsonProperty("email")
     String email;
+
+    @JsonProperty("salarioBase")
+    double salarioBase;
 
     @JsonProperty("fechaCreacion")
     private LocalDateTime fechaCreacion;

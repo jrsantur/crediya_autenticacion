@@ -42,7 +42,4 @@ public class TokenAutenticacion {
         return LocalDateTime.now().isAfter(fechaExpiracion);
     }
 
-    public boolean tienePermiso(AccionSistema accion) {
-        return !haExpirado();
-    }
 }

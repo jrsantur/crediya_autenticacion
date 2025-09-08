@@ -27,6 +27,13 @@ public class UsuarioUseCase {
 
     }
 
+    public Mono<Usuario> buscarPorDocumentoIdentidad (String documento){
+        return Mono.justOrEmpty(documento)
+                .switchIfEmpty(Mono.error(new DomainValidationException("Documento es requerido")))
+                .flatMap( usuarioRepository::buscarPorDocumentoIdentidad)
+                .switchIfEmpty(Mono.error(new DomainValidationException("Usuario no encontrado")));
+    }
+
     private Mono<Boolean> validarUsuarioNoExiste(String email) {
         return usuarioRepository.existePorEmail(email)
                 .flatMap(existe -> {
@@ -36,6 +43,8 @@ public class UsuarioUseCase {
                     return Mono.just(true);
                 });
     }
+
+
 
     private Mono<Usuario> encriptarPassword(Usuario usuario) {
         return Mono.fromCallable(() -> {
